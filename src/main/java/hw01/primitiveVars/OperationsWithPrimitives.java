@@ -1,4 +1,4 @@
-package primitiveVars;
+package hw01.primitiveVars;
 
 public class OperationsWithPrimitives {
 
