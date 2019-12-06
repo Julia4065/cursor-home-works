@@ -10,5 +10,11 @@ public class Main {
         Circle.createCircle(2);
 
         System.out.println("How many circles were initiated = " + Circle.circlesNumber);
+
+        Car car = new Car();
+        car.startEngine();
+        car.move();
+        car.setSpeed(100);
+        car.stopEngine();
     }
 }
