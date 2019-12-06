@@ -5,9 +5,10 @@ import hw03.circles.Circle;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println(new Circle(5).area());
-        System.out.println(new Circle(7).area());
-        System.out.println("How many circles were initiated = " + Circle.circleCounter);
+        Circle firstCircle = Circle.createCircle(5);
+        System.out.println("Area of circle with radius " + firstCircle.getRadius() + " is = " + firstCircle.area());
+        Circle.createCircle(2);
 
+        System.out.println("How many circles were initiated = " + Circle.circlesNumber);
     }
 }

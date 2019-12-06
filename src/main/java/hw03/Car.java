@@ -6,32 +6,23 @@ public class Car {
     int speed;
     boolean isCarMoving;
 
-    private void startEngine() {
+    void startEngine() {
         isEngineStarted = true;
         System.out.println("Engine is started");
     }
 
-    private void stopEngine() {
+    void stopEngine() {
         isEngineStarted = false;
         System.out.println("Engine is stopped");
     }
 
-    private void move(){
+    void move() {
         if (isEngineStarted) {
             isCarMoving = true;
         }
     }
 
-    private void setSpeed(int requiredSpeed){
+    void setSpeed(int requiredSpeed) {
         speed = requiredSpeed;
     }
-
-
-
-
-
-
-
-
-
 }
