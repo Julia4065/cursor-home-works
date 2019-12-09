@@ -6,7 +6,7 @@ public class Circle {
 
     public static int circlesNumber;
 
-    double radius;
+    private double radius;
 
     private Circle(double radius) {
         circlesNumber++;

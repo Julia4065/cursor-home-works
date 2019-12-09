@@ -2,9 +2,9 @@ package hw03;
 
 public class Car {
 
-    boolean isEngineStarted;
-    int speed;
-    boolean isCarMoving;
+    private boolean isEngineStarted;
+    private int speed;
+    private boolean isCarMoving;
 
     void startEngine() {
         isEngineStarted = true;
@@ -19,10 +19,14 @@ public class Car {
     void move() {
         if (isEngineStarted) {
             isCarMoving = true;
+            System.out.println("Car is moving");
+        } else {
+            System.out.println("Car can't move as engine is not started!");
         }
     }
 
     void setSpeed(int requiredSpeed) {
         speed = requiredSpeed;
+        System.out.println("Car is moving with speed " + requiredSpeed);
     }
 }
