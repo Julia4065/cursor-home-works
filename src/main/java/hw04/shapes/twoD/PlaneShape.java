@@ -1,17 +1,17 @@
 package hw04.shapes.twoD;
 
-import hw04.shapes.AreaMeasurable;
-import hw04.shapes.PerimeterMeasurable;
+import hw04.measures.AreaMeasurable;
+import hw04.measures.PerimeterMeasurable;
+import hw04.models.ShapeVertex;
 import hw04.shapes.Shape;
-import hw04.shapes.Vertex;
 
-public abstract class PlaneShape extends Shape implements AreaMeasurable, PerimeterMeasurable {
+abstract class PlaneShape extends Shape implements AreaMeasurable, PerimeterMeasurable {
 
-    public PlaneShape(Vertex vertex) {
+    protected PlaneShape(ShapeVertex vertex) {
         super(vertex);
     }
 
-    public PlaneShape(Vertex vertexA, Vertex vertexB, Vertex vertexC) {
+    protected PlaneShape(ShapeVertex vertexA, ShapeVertex vertexB, ShapeVertex vertexC) {
         super(vertexA, vertexB, vertexC);
     }
 }

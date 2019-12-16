@@ -1,6 +1,6 @@
 package hw04.shapes.twoD;
 
-import hw04.shapes.Vertex;
+import hw04.models.ShapeVertex;
 
 import static java.lang.Math.PI;
 import static java.lang.Math.pow;
@@ -8,9 +8,9 @@ import static org.apache.commons.math3.util.Precision.round;
 
 public class Circle extends PlaneShape {
 
-    double radius;
+    private double radius;
 
-    public Circle(Vertex vertex, double radius) {
+    public Circle(ShapeVertex vertex, double radius) {
         super(vertex);
         this.radius = radius;
     }
@@ -28,7 +28,7 @@ public class Circle extends PlaneShape {
     @Override
     public String toString() {
         return "Shape type is " + this.getClass().getSimpleName() + "\n" +
-                "Vertex coordinates: " + vertexA.getX() + ", " + vertexA.getY() + "\n" +
+                "ShapeVertex coordinates: " + vertexA.getX() + ", " + vertexA.getY() + "\n" +
                 "Radius is " + radius + "\n" +
                 "Area is " + getArea() + "\n" +
                 "Perimeter is " + getPerimeter();

@@ -1,5 +1,7 @@
-package hw04.shapes;
+package hw04.executor;
 
+import hw04.models.ShapeVertex;
+import hw04.shapes.Shape;
 import hw04.shapes.threeD.Cuboid;
 import hw04.shapes.threeD.Sphere;
 import hw04.shapes.threeD.SquarePyramid;
@@ -10,18 +12,15 @@ import hw04.shapes.twoD.Triangle;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
-    public static void main(String[] args) {
-        demonstrateShapes();
-    }
-
-    private static void demonstrateShapes() {
-        Circle circle = new Circle(new Vertex(5, 6), 5);
-        Rectangle rectangle = new Rectangle(new Vertex(5, 4), 7, 2);
-        Triangle triangle = new Triangle(new Vertex(7, 3), new Vertex(2, 5), new Vertex(3, 8));
-        Cuboid cuboid = new Cuboid(new Vertex(5, 7), 8, 7, 5);
-        Sphere sphere = new Sphere(new Vertex(5, 7), 5);
-        SquarePyramid pyramid = new SquarePyramid(new Vertex(5, 7), 10, 3);
+public class Executor {
+    public void demonstrateShapes() {
+        ShapeVertex vertex = new ShapeVertex(5, 6);
+        Circle circle = new Circle(vertex, 5);
+        Rectangle rectangle = new Rectangle(vertex, 7, 2);
+        Triangle triangle = new Triangle(vertex, new ShapeVertex(2, 5), new ShapeVertex(3, 8));
+        Cuboid cuboid = new Cuboid(vertex, 8, 7, 5);
+        Sphere sphere = new Sphere(vertex, 5);
+        SquarePyramid pyramid = new SquarePyramid(vertex, 10, 3);
 
         List<Shape> shapes = new ArrayList<>();
         shapes.add(circle);

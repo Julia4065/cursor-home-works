@@ -1,18 +1,18 @@
 package hw04.shapes.twoD;
 
-import hw04.shapes.Vertex;
+import hw04.models.ShapeVertex;
 
-import static hw04.shapes.Vertex.distanceBetweenVertices;
+import static hw04.models.ShapeVertex.distanceBetweenVertices;
 import static java.lang.Math.sqrt;
 import static org.apache.commons.math3.util.Precision.round;
 
 public class Triangle extends PlaneShape {
 
-    double sideA;
-    double sideB;
-    double sideC;
+    private double sideA;
+    private double sideB;
+    private double sideC;
 
-    public Triangle(Vertex vertexA, Vertex vertexB, Vertex vertexC) {
+    public Triangle(ShapeVertex vertexA, ShapeVertex vertexB, ShapeVertex vertexC) {
         super(vertexA, vertexB, vertexC);
         this.sideA = distanceBetweenVertices(vertexA, vertexB);
         this.sideB = distanceBetweenVertices(vertexB, vertexC);
@@ -33,9 +33,9 @@ public class Triangle extends PlaneShape {
     @Override
     public String toString() {
         return "Shape type is " + this.getClass().getSimpleName() + "\n" +
-                "Vertex coordinates: " + vertexA.getX() + ", " + vertexA.getY() + "\n" +
-                "Vertex coordinates: " + vertexB.getX() + ", " + vertexB.getY() + "\n" +
-                "Vertex coordinates: " + vertexC.getX() + ", " + vertexC.getY() + "\n" +
+                "ShapeVertex coordinates: " + vertexA.getX() + ", " + vertexA.getY() + "\n" +
+                "ShapeVertex coordinates: " + vertexB.getX() + ", " + vertexB.getY() + "\n" +
+                "ShapeVertex coordinates: " + vertexC.getX() + ", " + vertexC.getY() + "\n" +
                 "Area is " + getArea() + "\n" +
                 "Perimeter is " + getPerimeter();
     }
