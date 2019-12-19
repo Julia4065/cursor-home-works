@@ -39,7 +39,6 @@ public class Executor {
     }
 
     public static void demonstrateExistenceOfSharedElement() {
-        List<String> fruitsAndVegetables = new ArrayList<>();
         fruitsAndVegetables.add("Tomato");
         fruitsAndVegetables.add("Cucumber");
         fruitsAndVegetables.add("Potato");
