@@ -1,4 +1,4 @@
-package hw06.listManipulator;
+package hw06.listmanipulator;
 
 import java.util.*;
 

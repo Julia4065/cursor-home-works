@@ -4,11 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static hw06.listManipulator.ListManipulator.*;
+import static hw06.listmanipulator.ListManipulator.*;
 
 public class Executor {
     private static List<String> fruits = new ArrayList<>();
     private static List<String> fruitsAndVegetables = new ArrayList<>();
+
+    public static void demonstrateManipulationsWithList() {
+        demonstrateRemovingElementsFromList();
+        demonstrateReplacementValueInList();
+        demonstrateExistenceOfSharedElement();
+        demonstrateDescOrderingForTreeSet();
+    }
 
     public static void demonstrateRemovingElementsFromList() {
         int divisibleNumber = 3;
