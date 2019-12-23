@@ -1,19 +1,14 @@
 package hw07.library;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.YearMonth;
 import java.util.*;
-
-import static java.util.Map.Entry.comparingByKey;
-import static java.util.stream.Collectors.toMap;
 
 public class LibraryReport {
 
     private Map<LocalDate, String> libraryReport = new HashMap<>();
-    private Map<LocalDate, List<String>> libraryReportForMultipleBooksTaken = new HashMap<>();
+    private Map<LocalDate, List<String>> libraryReportForMultipleBooksTaken = new TreeMap<>();
 
-    public void takeABook(LocalDate date, String bookTitle) {
+    public void registerBook(LocalDate date, String bookTitle) {
         libraryReport.put(date, bookTitle);
     }
 
@@ -29,52 +24,37 @@ public class LibraryReport {
         return libraryReport.keySet();
     }
 
-    public void takeFewBooks(LocalDate date, List<String> bookTitles) {
+    public void registerFewBooks(LocalDate date, List<String> bookTitles) {
         libraryReportForMultipleBooksTaken.put(date, bookTitles);
     }
 
     public void countBooksThatWereTakenForTheMonth(MONTH month) {
-        Map<LocalDate, Long> datesWithCountedBooksThatWereTaken = libraryReportForMultipleBooksTaken.entrySet().stream()
-                .collect(toMap(date -> date.getKey(), books -> books.getValue().stream().count()));
-        Map<LocalDate, Long> allDates = findAllDatesInMonth(2019, month.getNumberOfMonth()).stream()
-                .collect(toMap(key -> key, val -> 0L));
 
-        Map<LocalDate, Long> countedBooksForTheMonth = new HashMap<>(datesWithCountedBooksThatWereTaken);
-        allDates.forEach((k, v) -> countedBooksForTheMonth.merge(k, v, Long::max));
+        LocalDate startDate = LocalDate.of(2019, month.getNumberOfMonth(), 1);
+        LocalDate endDate = LocalDate.of(2019, month.getNumberOfMonth(), 31);
 
-        LinkedHashMap<LocalDate, Long> sortedCountedBooksForTheMonth = countedBooksForTheMonth.entrySet().stream()
-                .sorted(comparingByKey())
-                .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+        Map<LocalDate, Integer> dayToCount = new TreeMap<>();
 
-        System.out.println("How many books were borrowed day by day for the month " + month);
-        System.out.println(sortedCountedBooksForTheMonth);
-    }
-
-    private List<LocalDate> findAllDatesInMonth(int year, int month) {
-        List<LocalDate> datesInMonth = new ArrayList<>();
-        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar cal = Calendar.getInstance();
-        cal.set(year, month - 1, 0);
-
-        int daysInMonth = YearMonth.of(year, month).lengthOfMonth();
-        for (int i = 0; i < daysInMonth; i++) {
-            cal.add(Calendar.DAY_OF_MONTH, 1);
-            datesInMonth.add(LocalDate.parse(fmt.format(cal.getTime())));
+        while (!startDate.isAfter(endDate)) {
+            int count = libraryReportForMultipleBooksTaken.getOrDefault(startDate, Collections.emptyList()).size();
+            dayToCount.put(startDate, count);
+            startDate = startDate.plusDays(1);
         }
-        return datesInMonth;
+
+        System.out.println(dayToCount);
     }
 
     public enum MONTH {
         OCTOBER(10);
 
-        private final int value;
+        private final int monthNumber;
 
-        MONTH(final int value) {
-            this.value = value;
+        MONTH(final int monthNumber) {
+            this.monthNumber = monthNumber;
         }
 
         public int getNumberOfMonth() {
-            return value;
+            return monthNumber;
         }
     }
 }
