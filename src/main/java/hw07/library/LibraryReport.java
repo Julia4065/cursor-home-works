@@ -34,8 +34,10 @@ public class LibraryReport {
     }
 
     public void countBooksThatWereTakenForTheMonth(MONTH month) {
-        Map<LocalDate, Long> datesWithCountedBooksThatWereTaken = libraryReportForMultipleBooksTaken.entrySet().stream().collect(toMap(date -> date.getKey(), books -> books.getValue().stream().count()));
-        Map<LocalDate, Long> allDates = findAllDatesInMonth(2019, month.getNumberOfMonth()).stream().collect(toMap(key -> key, val -> 0L));
+        Map<LocalDate, Long> datesWithCountedBooksThatWereTaken = libraryReportForMultipleBooksTaken.entrySet().stream()
+                .collect(toMap(date -> date.getKey(), books -> books.getValue().stream().count()));
+        Map<LocalDate, Long> allDates = findAllDatesInMonth(2019, month.getNumberOfMonth()).stream()
+                .collect(toMap(key -> key, val -> 0L));
 
         Map<LocalDate, Long> countedBooksForTheMonth = new HashMap<>(datesWithCountedBooksThatWereTaken);
         allDates.forEach((k, v) -> countedBooksForTheMonth.merge(k, v, Long::max));
@@ -63,18 +65,7 @@ public class LibraryReport {
     }
 
     public enum MONTH {
-        JANUARY(1),
-        FEBRUARY(2),
-        MARCH(3),
-        APRIL(4),
-        MAY(5),
-        JUNE(6),
-        JULY(7),
-        AUGUST(8),
-        SEPTEMBER(9),
-        OCTOBER(10),
-        NOVEMBER(11),
-        DECEMBER(12);
+        OCTOBER(10);
 
         private final int value;
 
