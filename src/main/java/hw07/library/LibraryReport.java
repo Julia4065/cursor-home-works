@@ -5,27 +5,27 @@ import java.util.*;
 
 public class LibraryReport {
 
-    private Map<LocalDate, String> libraryReport = new HashMap<>();
-    private Map<LocalDate, List<String>> libraryReportForMultipleBooksTaken = new TreeMap<>();
+    private Map<LocalDate, String> borrowDateToBook = new HashMap<>();
+    private Map<LocalDate, List<String>> borrowDateToBookList = new TreeMap<>();
 
     public void registerBook(LocalDate date, String bookTitle) {
-        libraryReport.put(date, bookTitle);
+        borrowDateToBook.put(date, bookTitle);
     }
 
     public String searchBookBy(LocalDate bookBorrowDate) {
-        return libraryReport.getOrDefault(bookBorrowDate, "There are no books for this date");
+        return borrowDateToBook.getOrDefault(bookBorrowDate, "There are no books for this date");
     }
 
     public Collection<String> findListOfBorrowedBooks() {
-        return libraryReport.values();
+        return borrowDateToBook.values();
     }
 
     public Set<LocalDate> findDatesWhenBooksWereBorrowed() {
-        return libraryReport.keySet();
+        return borrowDateToBook.keySet();
     }
 
     public void registerFewBooks(LocalDate date, List<String> bookTitles) {
-        libraryReportForMultipleBooksTaken.put(date, bookTitles);
+        borrowDateToBookList.put(date, bookTitles);
     }
 
     public void countBooksThatWereTakenForTheMonth(MONTH month) {
@@ -36,7 +36,7 @@ public class LibraryReport {
         Map<LocalDate, Integer> dayToCount = new TreeMap<>();
 
         while (!startDate.isAfter(endDate)) {
-            int count = libraryReportForMultipleBooksTaken.getOrDefault(startDate, Collections.emptyList()).size();
+            int count = borrowDateToBookList.getOrDefault(startDate, Collections.emptyList()).size();
             dayToCount.put(startDate, count);
             startDate = startDate.plusDays(1);
         }
@@ -45,7 +45,18 @@ public class LibraryReport {
     }
 
     public enum MONTH {
-        OCTOBER(10);
+        JANUARY(1),
+        FEBRUARY(2),
+        MARCH(3),
+        APRIL(4),
+        MAY(5),
+        JUNE(6),
+        JULY(7),
+        AUGUST(8),
+        SEPTEMBER(9),
+        OCTOBER(10),
+        NOVEMBER(11),
+        DECEMBER(12);
 
         private final int monthNumber;
 
