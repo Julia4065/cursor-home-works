@@ -5,12 +5,10 @@ import java.util.function.Function;
 public class CustomFunctionInterfaceImpl {
 
     public void evaluateValue(Integer value) {
+
         Function<Integer, String> functionImpl = o -> {
-            if (o > 5) {
-                return "Value more than 5";
-            } else {
-                return "Value less than 5";
-            }
+            String valueEvaluation = (o > 5) ? "Value more than 5" : "Value less than 5";
+            return valueEvaluation;
         };
 
         System.out.println(functionImpl.apply(value));
