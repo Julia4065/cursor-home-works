@@ -19,11 +19,11 @@ public class MovieFilter {
     }
 
     public void countMoviesPerGenre(List<Movie> movies1, List<Movie> movies2) {
-        Map<String, Long> quantityOfMoviesPerGenre = Stream.of(movies1, movies2)
+        Map<String, Long> genreToQuantityOfMovies = Stream.of(movies1, movies2)
                 .flatMap(Collection::stream)
                 .collect(groupingBy(Movie::getGenre, counting()));
 
         System.out.println("Count movies per genre: ");
-        System.out.println(quantityOfMoviesPerGenre);
+        System.out.println(genreToQuantityOfMovies);
     }
 }
