@@ -6,7 +6,7 @@ import hw10.factories.impl.ToyotaFactory;
 
 public class Executor {
 
-    CarFactory carFactory;
+    private CarFactory carFactory;
 
     public void createCars() {
         createToyotaSedanCar();
@@ -15,11 +15,12 @@ public class Executor {
 
     private void createToyotaSedanCar() {
         carFactory = new ToyotaFactory();
-        carFactory.createSedan();
+        carFactory.createSedan().drive();
+
     }
 
     private void createFordCoupeCar() {
         carFactory = new FordFactory();
-        carFactory.createCoupe();
+        carFactory.createCoupe().drive();
     }
 }
