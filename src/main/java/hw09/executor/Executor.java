@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Executor {
 
     public void demonstrateHomeWork9() {
-        catchExceptions();
+        runExceptionCatchers();
         showResultOfDivisionOfTwoNumbers();
         rethrowExceptions();
     }
@@ -27,7 +27,7 @@ public class Executor {
         }
     }
 
-    public void catchExceptions() {
+    public void runExceptionCatchers() {
         catchExceptionA();
         catchExceptionB();
         catchIOException();
